@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import {ArticleService} from "../services/article.service";
 import {RawArticle} from "../models/raw-article";
 import { EventEmitter } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-article-creation',
@@ -11,12 +12,14 @@ import { EventEmitter } from '@angular/core';
 })
 export class ArticleCreationComponent implements OnInit {
 
-  articleForm : FormGroup;
+  articleForm ?: FormGroup;
 
   @Output()
-  newArticle : EventEmitter<RawArticle> = new EventEmitter();
+  newArticle ?: EventEmitter<RawArticle> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private articleService : ArticleService) {
+  constructor(private fb: FormBuilder,
+              private articleService: ArticleService,
+              private router: Router) {
     this.articleForm = this.fb.group({
       title: ['Fake Title', Validators.required ],
       content : ['', Validators.required ],
@@ -29,11 +32,14 @@ export class ArticleCreationComponent implements OnInit {
 
   createArticle(){
     const formModel = this.articleForm.value;
-    const rawArticle : RawArticle = {
+    const rawArticle: RawArticle = {
       title : formModel.title,
       content : formModel.content,
       authors : formModel.authors
+    };
+    this.articleService.add(rawArticle).subscribe((article) => {
+      this.router.navigateByUrl('/articles');
     }
-    this.articleService.add(rawArticle).subscribe((article) => this.newArticle.emit(article));
+      );
   }
 }
