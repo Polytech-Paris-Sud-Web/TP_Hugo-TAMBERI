@@ -1,10 +1,8 @@
 # Aide
 
 Réalsié avec l'aide de :
-
-  Paulin LAMBERT
-  
-  Alexandre MARIE (aide mutuelle au fil de l'avancement)
+* Paulin LAMBERT
+* Alexandre MARIE (aide mutuelle au fil de l'avancement)
 
 # SimpleApp
 
