@@ -1,3 +1,9 @@
+# Aide
+
+Réalsié avec l'aide de :
+  Paulin LAMBERT
+  Alexandre MARIE (aide mutuelle au fil de l'avancement)
+
 # SimpleApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
